@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 2020;
+const PORT = 1010;
 
 // Dummy books data
 const books = [
