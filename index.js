@@ -26,7 +26,7 @@ app.get('/books/:id', (req, res) => {
   }
 });
 // Default port
-const defaultPort = 1010;
+const defaultPort = process.env.PORT || 1010;
 // Get port from command-line argument or use default port
 const port = process.argv[2] || defaultPort;
 // Start the server
