@@ -8,7 +8,9 @@ const books = [
   { id: 3, title: '1984', author: 'George Orwell', pageCount: 328, country: 'United Kingdom' },
   { id: 4, title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', pageCount: 417, country: 'Colombia' },
   { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pageCount: 180, country: 'United States' },
+  { id: 6, title: 'Astoņi Kustiņi', author: 'I. Ziedonis', pageCount: 180, country: 'Latvia' },
 ];
+
 // Endpoint to get list of dummy books
 app.get('/books', (req, res) => {
   res.json(books);
@@ -23,16 +25,11 @@ app.get('/books/:id', (req, res) => {
     res.status(404).json({ message: 'Book not found' });
   }
 });
-
 // Default port
 const defaultPort = 1010;
-
 // Get port from command-line argument or use default port
 const port = process.argv[2] || defaultPort;
-
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
