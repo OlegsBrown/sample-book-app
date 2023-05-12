@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 1010;
+
 // Dummy books data
 const books = [
   { id: 1, title: 'The Catcher in the Rye', author: 'J.D. Salinger', pageCount: 224, country: 'United States' },
@@ -9,8 +10,8 @@ const books = [
   { id: 4, title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', pageCount: 417, country: 'Colombia' },
   { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pageCount: 180, country: 'United States' },
   { id: 6, title: 'Astoņi Kustiņi', author: 'I. Ziedonis', pageCount: 180, country: 'Latvia' },
+  { id: 7, title: 'Chip War', author: '..', pageCount: 300, country: 'USA' },
 ];
-
 // Endpoint to get list of dummy books
 app.get('/books', (req, res) => {
   res.json(books);
@@ -26,7 +27,7 @@ app.get('/books/:id', (req, res) => {
   }
 });
 // Default port
-const defaultPort = process.env.PORT || 1010;
+const defaultPort = 1050;
 // Get port from command-line argument or use default port
 const port = process.argv[2] || defaultPort;
 // Start the server
