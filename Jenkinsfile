@@ -14,72 +14,6 @@ pipeline {
         stage('Deploy to DEV') {
             steps {
                 script{
-                    deploy("DEV")
-                }
-            }
-        }
-        stage('Tests on DEV') {
-            steps {
-                script{
-                    test("DEV")
-                }
-            }
-        }
-        stage('Deploy to STG') {
-            steps {
-                script{
-                    deploy("STG")
-                }
-            }
-        }
-        stage('Tests on STG') {
-            steps {
-                script{
-                    test("DEV")
-                }
-            }
-        }
-        stage('Deploy to PRD') {
-            steps {
-                script{
-                    deploy("PRD")
-                }
-            }
-        }
-        stage('Tests on PRD') {
-            steps {
-                script{
-                    test("DEV")
-                }
-            }
-        }
-    }
-}
-
-def deploy(String environment){
-    echo "Deployment to ${environment} has started.."
-}
-
-def test(String environment){
-    echo "Testing to ${environment} has started.."
-}
-
-def build(){
-    echo "Building of node application is starting.."
-}pipeline {
-    agent any
-    triggers{ pollSCM('*/1 * * * *') }
-    stages {
-        stage('Build') {
-            steps {
-                script{
-                    build()
-                }
-            }
-        }
-        stage('Deploy to DEV') {
-            steps {
-                script{
                     deploy("DEV", 1010)
                 }
             }
@@ -101,7 +35,6 @@ def build(){
         stage('Tests on STG') {
             steps {
                 script{
-                    test("DEV")
                     test("STG")
                 }
             }
@@ -122,8 +55,10 @@ def build(){
         }
     }
 }
+
 // for windows: bat "npm.."
 // for linux/macos: sh "npm .."
+
 def build(){
     echo "Building of node application is starting.."
     sh "ls"
@@ -136,9 +71,12 @@ def deploy(String environment, int port){
     sh "pm2 delete \"books-${environment}\""
     sh "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
+
 def test(String environment){
     echo "Testing to ${environment} has started.."
 }
+
+
 // Būvējuma izveidi;
 // Būvējuma izvietošanu “DEV” vidē;
 // Testu izpildi “DEV” vidē;
