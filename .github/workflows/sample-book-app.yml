@@ -30,10 +30,6 @@ jobs:
     needs: [deploy-dev]
     steps:
       - uses: actions/checkout@v3.5.2
-      - uses: actions/checkout@v3.5.2
-        with:
-          repository: 'OlegsBrown/course-js-api-framework.git'
-          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
           environment: 'DEV'
@@ -53,10 +49,6 @@ jobs:
     needs: [deploy-stg]
     steps:
       - uses: actions/checkout@v3.5.2
-      - uses: actions/checkout@v3.5.2
-        with:
-          repository: 'OlegsBrown/course-js-api-framework.git'
-          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
           environment: 'STG'
@@ -76,10 +68,6 @@ jobs:
     needs: [deploy-prd]
     steps:
       - uses: actions/checkout@v3.5.2
-      - uses: actions/checkout@v3.5.2
-        with:
-          repository: 'OlegsBrown/course-js-api-framework.git'
-          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
-          environment: 'PRD' 
+          environment: 'PRD'
