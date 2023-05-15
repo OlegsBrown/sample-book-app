@@ -68,8 +68,8 @@ def build(){
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
-    pm2 delete "books-${environment}"
-    pm2 start -n "books-${environment}" index.js -- -p ${port}
+    bat "pm2 delete \"books-${environment}\""
+    bat "pm2 start -n \"books-${environment}\" index.js -- -p ${port}"
 }
 
 def test(String environment){
