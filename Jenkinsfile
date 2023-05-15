@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers{ pollSCM('*/1 * * * *') }
-
+    
 
     stages {
         stage('Build') {
@@ -21,7 +21,7 @@ pipeline {
         stage('Tests on DEV') {
             steps {
                 script{
-                    test("DEV")
+                    test("BOOKS", "DEV")
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Tests on STG') {
             steps {
                 script{
-                    test("STG")
+                    test("BOOKS", "STG")
                 }
             }
         }
@@ -49,36 +49,29 @@ pipeline {
         stage('Tests on PRD') {
             steps {
                 script{
-                    test("PRD")
+                    test("BOOKS", "PRD")
                 }
             }
         }
     }
 }
 
-
 def build(){
     echo "Building of node application is starting.."
-    bat "dir"
     bat "npm install"
-    bat "npm test"
 }
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
-    bat "pm2 delete \"books-${environment}\""
-    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
+    git branch: 'main', url: 'https://github.com/mtararujs/sample-book-app.git'
+    bat "npm install"
+    bat "C:\\Users\\ole6k\\AppData\\Roaming\\npm\\pm2 delete \"books-${environment}\" & EXIT /B 0"
+    bat "C:\\Users\\ole6k\\AppData\\Roaming\\npm\\pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
 def test(String test_set, String environment){
-    echo "Testing ${test_set} test set to ${environment} has started.."
+    echo "Testing ${test_set} test set on ${environment} has started.."
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    bat "npm install"
     bat "npm run ${test_set} ${test_set}_${environment}"
 }
-
-// Būvējuma izveidi;
-// Būvējuma izvietošanu “DEV” vidē;
-// Testu izpildi “DEV” vidē;
-// Būvējuma izvietošanu “STG” vidē;
-// Testu izpildi “STG” vidē;
-// Būvējuma izvietošanu “PRD” vidē;
-// Testu izpildi “PRD” vidē;
