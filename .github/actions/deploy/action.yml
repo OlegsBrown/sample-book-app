@@ -10,13 +10,13 @@ runs:
   steps: 
     - name: Print output
       run: echo Deployment to ${{ inputs.environment }} has started..
-      shell: bash
+      shell: cmd
     - name: Install dependencies
       run : npm install
-      shell: bash
+      shell: cmd
     - name: Delete service
       run : pm2 delete "books-${{ inputs.environment }}"
-      shell: bash
+      shell: cmd
     - name: Start service
       run : pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
-      shell: bash
+      shell: cmd

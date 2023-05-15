@@ -15,7 +15,7 @@ runs:
         ls
         npm install
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
-      shell: bash
+      shell: cmd
     - name: Upload report as artifact
       uses: actions/upload-artifact@v3
       with: 
