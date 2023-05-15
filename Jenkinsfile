@@ -56,12 +56,9 @@ pipeline {
     }
 }
 
-// for windows: bat "npm.."
-// for linux/macos: sh "npm .."
-
 def build(){
     echo "Building of node application is starting.."
-    bat "ls"
+    bat "dir"
     bat "npm install"
     bat "npm test"
 }
@@ -72,8 +69,9 @@ def deploy(String environment, int port){
     bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
-def test(String environment){
-    echo "Testing to ${environment} has started.."
+def test(String test_set, String environment){
+    echo "Testing ${test_set} test set to ${environment} has started.."
+    bat "npm run ${test_set} ${test_set}_${environment}"
 }
 
 // Būvējuma izveidi;
