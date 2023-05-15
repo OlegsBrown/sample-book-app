@@ -76,7 +76,6 @@ def test(String environment){
     echo "Testing to ${environment} has started.."
 }
 
-
 // Būvējuma izveidi;
 // Būvējuma izvietošanu “DEV” vidē;
 // Testu izpildi “DEV” vidē;
