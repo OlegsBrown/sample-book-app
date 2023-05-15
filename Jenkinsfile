@@ -63,7 +63,7 @@ def build(){
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
-    git branch: 'main', url: 'https://github.com/mtararujs/sample-book-app.git'
+    git branch: 'main', url: 'https://github.com/OlegsBrow/sample-book-app.git'
     bat "npm install"
     bat "C:\\Users\\ole6k\\AppData\\Roaming\\npm\\pm2 delete \"books-${environment}\" & EXIT /B 0"
     bat "C:\\Users\\ole6k\\AppData\\Roaming\\npm\\pm2 start -n \"books-${environment}\" index.js -- ${port}"
@@ -71,7 +71,7 @@ def deploy(String environment, int port){
 
 def test(String test_set, String environment){
     echo "Testing ${test_set} test set on ${environment} has started.."
-    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    git branch: 'main', poll: false, url: 'https://github.com/OlegsBrown/course-js-api-framework.git'
     bat "npm install"
     bat "npm run ${test_set} ${test_set}_${environment}"
 }
