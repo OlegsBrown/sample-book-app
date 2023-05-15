@@ -1,0 +1,8 @@
+runs:
+  using: "composite"
+  steps: 
+    - name: Install depedencies
+      run: |
+        echo Building of node application is starting..
+        npm install
+      shell: bash
