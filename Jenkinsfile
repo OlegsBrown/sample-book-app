@@ -62,7 +62,7 @@ pipeline {
 def build(){
     echo "Building of node application is starting.."
     bat "dir"
-    bat "npm install"
+    bat "npm install -g"
     //bat "npm test"
 }
 
