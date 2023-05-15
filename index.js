@@ -11,6 +11,7 @@ const books = [
   { id: 4, title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', pageCount: 417, country: 'Colombia' },
   { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pageCount: 180, country: 'United States' },
   { id: 6, title: 'Astoņi Kustiņi', author: 'I. Ziedonis', pageCount: 180, country: 'Latvia' },
+  { id: 7, title: 'Chip War', author: '..', pageCount: 300, country: 'USA' },
 ];
 
 // Endpoint to get list of dummy books
@@ -30,7 +31,7 @@ app.get('/books/:id', (req, res) => {
 });
 
 // Default port
-const defaultPort = 1010;
+const defaultPort = 1050;
 
 // Get port from command-line argument or use default port
 const port = process.argv[2] || defaultPort;
